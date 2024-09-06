@@ -1,22 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Boton from './componentes/boton';
+import Saludo from './componentes/saludo';
+import { useState } from "react";
 
 function App() {
+  const [mensaje, setMensaje] = useState("");
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <Saludo saludo='Ingresa una palabra' />
+          <input
+            type="text"
+            value={mensaje}
+            placeholder="Ingresa una palabra"
+            onChange={e => setMensaje(e.target.value)} />
+
+          <p>
+            <strong>{mensaje}</strong>
+          </p>
+        </div>
+
+        <Boton mensaje={mensaje} />
+
       </header>
     </div>
   );
